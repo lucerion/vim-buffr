@@ -45,7 +45,7 @@ func! s:open_buffer(name, position)
 endfunc
 
 func! s:build_buffer(action, buffer, position)
-  exec a:position . ' ' . a:action . ' ' . a:buffer
+  silent exec a:position . ' ' . a:action . ' ' . a:buffer
 endfunc
 
 func! s:change_focus(window_number)
