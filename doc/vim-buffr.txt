@@ -15,20 +15,20 @@ License                                                     |vim-buffr-license|
 ===============================================================================
 INSTALL                                                     *vim-buffr-install*
 
-Vundle                                https://github.com/VundleVim/Vundle.vim
+Vundle                                  https://github.com/VundleVim/Vundle.vim
 >
     Plugin 'lucerion/vim-buffr'
 <
-Pathogen                                https://github.com/tpope/vim-pathogen
+Pathogen                                  https://github.com/tpope/vim-pathogen
 >
     cd ~/.vim/bundle
     git clone https://github.com/lucerion/vim-buffr
 <
-NeoBundle                             https://github.com/Shougo/neobundle.vim
+NeoBundle                               https://github.com/Shougo/neobundle.vim
 >
     NeoBundle 'lucerion/vim-buffr'
 <
-vim-plug                                 https://github.com/junegunn/vim-plug
+vim-plug                                   https://github.com/junegunn/vim-plug
 >
     Plug 'lucerion/vim-buffr'
 <
