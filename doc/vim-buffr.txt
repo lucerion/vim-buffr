@@ -10,6 +10,7 @@ CONTENTS                                                            *vim-buffr*
 
 Install                                                     |vim-buffr-install|
 Functions                                                 |vim-buffr-functions|
+Changelog                                                 |vim-buffr-changelog|
 License                                                     |vim-buffr-license|
 
 ===============================================================================
@@ -46,6 +47,12 @@ buffr#open {name} {position}       Open a buffer with {name} at {position}
                                    buffer will be created.
                                    Possible {position} values: 'top', 'bottom',
                                    'left', 'right'. Default: 'top'
+
+===============================================================================
+CHANGELOG                                                 *vim-buffr-changelog*
+
+0.1.0 (2015-12-06)
+  First release
 
 ===============================================================================
 LICENSE                                                     *vim-buffr-license*
