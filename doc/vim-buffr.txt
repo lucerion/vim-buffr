@@ -57,7 +57,7 @@ CHANGELOG                                                 *vim-buffr-changelog*
 ===============================================================================
 LICENSE                                                     *vim-buffr-license*
 
-Copyright (c) 2015 Alexander Skachko
+Copyright (c) 2015-2016 Alexander Skachko
 
 MIT License
 
