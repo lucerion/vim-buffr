@@ -16,36 +16,39 @@ let s:positions = {
 let s:default_position = 'leftabove'
 let s:buffers_positions = {}
 
-func! buffr#open(name, ...)
-  if len(a:000)
-    call s:set_buffer_position(a:name, a:1)
-  endif
-  let l:position = s:get_buffer_position(a:name)
+func! buffr#open_or_create_buffer(name, ...)
+  let l:position = s:position(a:name, a:000)
 
-  if bufnr(a:name) == -1
-    call s:create_buffer(a:name, l:position)
+  if buffer_exists(a:name)
+    call buffr#open_buffer(a:name, l:position)
   else
-    call s:open_buffer(a:name, l:position)
+    call buffr#create_buffer(a:name, l:position)
   end
 endfunc
 
-func! s:create_buffer(name, position)
-  call s:build_buffer('new', a:name, a:position)
+func! buffr#create_buffer(name, ...)
+  let l:position = s:position(a:name, a:000)
+  call s:open_buffer('new', a:name, l:position)
 endfunc
 
-func! s:open_buffer(name, position)
+func! buffr#open_buffer(name, ...)
+  if !buffer_exists(a:name)
+    return
+  end
+
+  let l:position = s:position(a:name, a:000)
   let l:buffer_number = bufnr(a:name)
   let l:window_number = bufwinnr(l:buffer_number)
 
   if l:window_number == -1
-    call s:build_buffer('split', '+buffer' . l:buffer_number, a:position)
+    call s:open_buffer('split', '+buffer' . l:buffer_number, l:position)
   else
     call s:change_focus(l:window_number)
   endif
 endfunc
 
-func! s:build_buffer(action, buffer, position)
-  silent exec a:position . ' ' . a:action . ' ' . a:buffer
+func! s:open_buffer(action, name, position)
+  silent exec a:position . ' ' . a:action . ' ' . a:name
 endfunc
 
 func! s:change_focus(window_number)
@@ -54,11 +57,9 @@ func! s:change_focus(window_number)
   endif
 endfunc
 
-func! s:set_buffer_position(buffer, position)
-  let l:position = get(s:positions, a:position, s:default_position)
-  let s:buffers_positions[a:buffer] = l:position
-endfunc
-
-func! s:get_buffer_position(buffer)
-  return get(s:buffers_positions, a:buffer, s:default_position)
+func! s:position(name, position)
+  if len(a:position) && has_key(s:positions, a:position[0])
+    let s:buffers_positions[a:name] = get(s:positions, a:position[0])
+  endif
+  return get(s:buffers_positions, a:name, s:default_position)
 endfunc
