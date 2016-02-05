@@ -42,11 +42,28 @@ Manual
 ===============================================================================
 FUNCTIONS                                                 *vim-buffr-functions*
 
-buffr#open {name} {position}       Open a buffer with {name} at {position}
-                                   If buffer with {name} doesn't exists new
-                                   buffer will be created.
-                                   Possible {position} values: 'top', 'bottom',
-                                   'left', 'right'. Default: 'top'
+                                                  *buffr#open_or_create_buffer*
+buffr#open_or_create_buffer({name}, {position})
+
+  Open or create a new buffer with {name} at {position}
+
+  Possible {position} value: 'top', 'bottom', 'left', 'right'
+  Default: 'top'
+
+                                                            *buffr#open_buffer*
+buffr#open_buffer({name}, {position})
+
+  Open a buffer by {name} at {position}
+
+  Possible {position} value: 'top', 'bottom', 'left', 'right'
+
+                                                          *buffr#create_buffer*
+buffr#create_buffer({name}, {position})
+
+  Create a new buffer with {name} at {position}
+
+  Possible {position} value: 'top', 'bottom', 'left', 'right'
+  Default: 'top'
 
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
