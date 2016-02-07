@@ -9,6 +9,7 @@ Licence:     MIT (see LICENSE)
 CONTENTS                                                            *vim-buffr*
 
 Install                                                     |vim-buffr-install|
+Commands                                                   |vim-buffr-commands|
 Functions                                                 |vim-buffr-functions|
 Changelog                                                 |vim-buffr-changelog|
 License                                                     |vim-buffr-license|
@@ -40,30 +41,38 @@ Manual
     copy all of the files into your ~/.vim directory
 
 ===============================================================================
+COMMANDS                                                   *vim-buffr-commands*
+
+                                                                       *:Buffr*
+
+:Buffr {position} {name} or :Buffr {name} {position}
+
+  Open or create a new buffer with {name} at {position}
+  Possible {position} values: -top, -bottom, -left, -right, -tab
+  Default {position} value: -top
+
+===============================================================================
 FUNCTIONS                                                 *vim-buffr-functions*
 
                                                   *buffr#open_or_create_buffer*
 buffr#open_or_create_buffer({name}, {position})
 
   Open or create a new buffer with {name} at {position}
-
-  Possible {position} value: 'top', 'bottom', 'left', 'right'
-  Default: 'top'
+  Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
+  Default {position} value: 'top'
 
                                                             *buffr#open_buffer*
 buffr#open_buffer({name}, {position})
 
   Open a buffer by {name} at {position}
-
-  Possible {position} value: 'top', 'bottom', 'left', 'right'
+  Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
 
                                                           *buffr#create_buffer*
 buffr#create_buffer({name}, {position})
 
   Create a new buffer with {name} at {position}
-
-  Possible {position} value: 'top', 'bottom', 'left', 'right'
-  Default: 'top'
+  Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
+  Default position value: 'top'
 
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
