@@ -2,7 +2,7 @@
 " Description:  Vim plugin for easy buffer creation
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
-" Version:      0.1
+" Version:      0.2
 " Licence:      MIT
 " ==============================================================
 
