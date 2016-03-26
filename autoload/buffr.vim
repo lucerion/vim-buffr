@@ -1,11 +1,12 @@
 " ==============================================================
-" Description:  Vim plugin for easy buffer creation
+" Description:  Vim plugin and functions for working with buffers
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
-" Version:      0.2
+" Version:      0.3
 " Licence:      MIT
 " ==============================================================
 
+let s:buffers = {}
 let s:positions = {
   \ 'top': 'leftabove',
   \ 'bottom': 'rightbelow',
@@ -13,31 +14,31 @@ let s:positions = {
   \ 'right': 'vertical rightbelow',
   \ 'tab': 'tab'
   \ }
+let s:default_name = 'buffr'
 let s:default_position = 'leftabove'
-let s:buffers_positions = {}
 
-func! buffr#open_or_create_buffer(name, ...)
-  let l:position = s:position(a:name, a:000)
+func! buffr#open_or_create_buffer(...)
+  let l:name = s:name(a:000)
 
-  if buffer_exists(a:name)
-    call buffr#open_buffer(a:name, l:position)
+  if buffer_exists(l:name)
+    call buffr#open_buffer(s:params(a:000))
   else
-    call buffr#create_buffer(a:name, l:position)
-  end
+    call buffr#create_buffer(s:params(a:000))
+  endif
 endfunc
 
-func! buffr#create_buffer(name, ...)
-  let l:position = s:position(a:name, a:000)
-  call s:open_buffer('new', a:name, l:position)
+func! buffr#create_buffer(...)
+  let l:name = s:name(a:000)
+  let l:position = s:position(a:000)
+
+  call s:open_buffer('new', l:name, l:position)
 endfunc
 
-func! buffr#open_buffer(name, ...)
-  if !buffer_exists(a:name)
-    return
-  end
+func! buffr#open_buffer(...)
+  let l:name = s:name(a:000)
+  let l:position = s:position(a:000)
 
-  let l:position = s:position(a:name, a:000)
-  let l:buffer_number = bufnr(a:name)
+  let l:buffer_number = bufnr(l:name)
   let l:window_number = bufwinnr(l:buffer_number)
 
   if l:window_number == -1
@@ -48,7 +49,13 @@ func! buffr#open_buffer(name, ...)
 endfunc
 
 func! s:open_buffer(action, name, position)
-  silent exec a:position . ' ' . a:action . ' ' . escape(a:name, ' ')
+  let l:command = a:position . ' ' . a:action
+
+  if a:name != s:default_name
+    let l:command .= ' ' . escape(a:name, ' ')
+  endif
+
+  silent exec l:command
 endfunc
 
 func! s:change_focus(window_number)
@@ -57,9 +64,32 @@ func! s:change_focus(window_number)
   endif
 endfunc
 
-func! s:position(name, position)
-  if len(a:position) && has_key(s:positions, a:position[0])
-    let s:buffers_positions[a:name] = get(s:positions, a:position[0])
+func! s:params(args)
+  return get(a:args, 0, {})
+endfunc
+
+func! s:name(args)
+  return get(s:params(a:args), 'name', s:default_name)
+endfunc
+
+func! s:position(args)
+  let l:name = s:name(a:args)
+  let l:position = get(s:params(a:args), 'position', '')
+
+  let l:current_position = get(s:buffers, l:name, '')
+  if !len(l:position) && len(l:current_position)
+    return l:current_position
   endif
-  return get(s:buffers_positions, a:name, s:default_position)
+
+  let l:new_position = get(s:positions, l:position, '')
+  if len(l:new_position)
+    let s:buffers[l:name] = l:new_position
+    return l:new_position
+  endif
+
+  if len(l:current_position)
+    return l:current_position
+  endif
+
+  return get(s:positions, g:buffr_default_position, s:default_position)
 endfunc
