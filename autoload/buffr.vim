@@ -3,7 +3,7 @@
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
 " Version:      0.3
-" Licence:      MIT
+" Licence:      BSD-3-Clause
 " ==============================================================
 
 let s:buffers = {}
