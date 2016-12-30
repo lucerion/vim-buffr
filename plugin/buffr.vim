@@ -2,11 +2,11 @@
 " Description:  Vim plugin and functions for working with buffers
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
-" Version:      0.3
+" Version:      0.3.0 (2016-03-26)
 " Licence:      BSD-3-Clause
 " ==============================================================
 
-if exists('g:loaded_buffr') || &compatible || (v:version < 700)
+if exists('g:loaded_buffr') || &compatible || v:version < 700
   finish
 endif
 

@@ -1,9 +1,9 @@
 *vim-buffr.txt*    Vim plugin and functions for working with buffers
 
-Author:      Alexander Skachko <alexander.skachko@gmail.com>
-Homepage:    https://github.com/lucerion/vim-buffr
-Version:     0.3
-Licence:     BSD-3-Clause (see LICENSE)
+Author:          Alexander Skachko <alexander.skachko@gmail.com>
+Homepage:        https://github.com/lucerion/vim-buffr
+Version:         0.3.0 (2016-03-26)
+Licence:         BSD-3-Clause (see LICENSE)
 
 ===============================================================================
 CONTENTS                                                            *vim-buffr*
@@ -18,20 +18,20 @@ License                                                     |vim-buffr-license|
 ===============================================================================
 INSTALL                                                     *vim-buffr-install*
 
-Vundle                                  https://github.com/VundleVim/Vundle.vim
+Vundle                                https://github.com/VundleVim/Vundle.vim
 >
     Plugin 'lucerion/vim-buffr'
 <
-Pathogen                                  https://github.com/tpope/vim-pathogen
+Pathogen                                https://github.com/tpope/vim-pathogen
 >
     cd ~/.vim/bundle
     git clone https://github.com/lucerion/vim-buffr
 <
-NeoBundle                               https://github.com/Shougo/neobundle.vim
+NeoBundle                             https://github.com/Shougo/neobundle.vim
 >
     NeoBundle 'lucerion/vim-buffr'
 <
-vim-plug                                   https://github.com/junegunn/vim-plug
+vim-plug                                 https://github.com/junegunn/vim-plug
 >
     Plug 'lucerion/vim-buffr'
 <
@@ -96,29 +96,32 @@ buffr#create_buffer({ 'name': {name}, 'position': {position} })
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
 
-
 0.3.0 (2016-03-26)~
+
   Changes
     * buffer name was changed to optional
     * function params were changed to named params
     * default position option was added
 
 0.2.0 (2016-02-08)~
+
   Changes
     * buffr#open function was separated to buffr#open_or_create_buffer,
       buffr#open_buffer, buffr#create_buffer
     * :Buffr command was added
+
   Fixes
     * buffer name space escaping was added
     * open buffer silent
 
 0.1.0 (2015-12-06)~
+
   First release
 
 ===============================================================================
 LICENSE                                                     *vim-buffr-license*
 
-Copyright © 2015-2016, Alexander Skachko
+Copyright © 2015, Alexander Skachko
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
