@@ -15,7 +15,6 @@ let s:positions = {
   \ 'tab': 'tab'
   \ }
 let s:default_name = 'buffr'
-let s:default_position = 'leftabove'
 
 func! buffr#open_or_create_buffer(...)
   let l:name = s:name(a:000)
@@ -31,7 +30,7 @@ func! buffr#create_buffer(...)
   let l:name = s:name(a:000)
   let l:position = s:position(a:000)
 
-  call s:open_buffer('new', l:name, l:position)
+  call s:open_buffer(l:position, 'new', l:name)
 endfunc
 
 func! buffr#open_buffer(...)
@@ -42,13 +41,13 @@ func! buffr#open_buffer(...)
   let l:window_number = bufwinnr(l:buffer_number)
 
   if l:window_number == -1
-    call s:open_buffer('split', '+buffer' . l:buffer_number, l:position)
+    call s:open_buffer(l:position, 'split', '+buffer'.l:buffer_number)
   else
     call s:change_focus(l:window_number)
   endif
 endfunc
 
-func! s:open_buffer(action, name, position)
+func! s:open_buffer(position, action, name)
   let l:command = a:position . ' ' . a:action
 
   if a:name != s:default_name
@@ -91,5 +90,5 @@ func! s:position(args)
     return l:current_position
   endif
 
-  return get(s:positions, g:buffr_default_position, s:default_position)
+  return get(s:positions, g:buffr_default_position, s:positions.top)
 endfunc
