@@ -1,14 +1,15 @@
 " ==============================================================
-" Description:  Vim plugin and functions for working with buffers
+" Description:  Vim plugin for working with buffers
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
-" Version:      0.3.0 (2016-03-26)
+" Version:      1.0.0 (2017-09-03)
 " Licence:      BSD-3-Clause
 " ==============================================================
 
 if exists('g:loaded_buffr') || &compatible || v:version < 700
   finish
 endif
+let g:loaded_buffr = 1
 
 if !exists('g:buffr_default_position')
   let g:buffr_default_position = 'top'
@@ -34,7 +35,4 @@ func! s:open_buffer(...)
   call buffr#open_or_create_buffer(l:args)
 endfunc
 
-comm! -nargs=* -complete=customlist,s:autocompletion Buffr
-  \ call s:open_buffer(<f-args>)
-
-let g:loaded_buffr = 1
+comm! -nargs=* -complete=customlist,s:autocompletion Buffr call s:open_buffer(<f-args>)

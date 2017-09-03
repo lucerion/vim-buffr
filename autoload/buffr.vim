@@ -1,8 +1,8 @@
 " ==============================================================
-" Description:  Vim plugin and functions for working with buffers
+" Description:  Vim plugin for working with buffers
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-buffr
-" Version:      0.3.0 (2016-03-26)
+" Version:      1.0.0 (2017-09-03)
 " Licence:      BSD-3-Clause
 " ==============================================================
 
