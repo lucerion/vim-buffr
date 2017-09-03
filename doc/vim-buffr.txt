@@ -1,8 +1,8 @@
-*vim-buffr.txt*    Vim plugin and functions for working with buffers
+*vim-buffr.txt*    Vim plugin for working with buffers
 
 Author:          Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:        https://github.com/lucerion/vim-buffr
-Version:         0.3.0 (2016-03-26)
+Version:         1.0.0 (2017-09-03)
 Licence:         BSD-3-Clause (see LICENSE)
 
 ===============================================================================
@@ -79,7 +79,7 @@ buffr#open_or_create_buffer({ 'name': {name}, 'position': {position} })
 
 buffr#open_buffer({ 'name': {name}, 'position': {position})
 
-  Open a buffer by {name} at {position}.
+  Open a buffer with {name} at {position}.
   Option 'name' is required.
   Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
   Default {position} value: 'top'
@@ -95,6 +95,10 @@ buffr#create_buffer({ 'name': {name}, 'position': {position} })
 
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
+
+1.0.0 (2017-09-03)~
+
+  Code and documentation changes
 
 0.3.0 (2016-03-26)~
 
