@@ -16,7 +16,7 @@ let s:positions = {
   \ }
 let s:default_name = 'buffr'
 
-func! buffr#open_or_create_buffer(...)
+func! buffr#open_or_create_buffer(...) abort
   let l:name = s:name(a:000)
 
   if buffer_exists(l:name)
@@ -26,14 +26,14 @@ func! buffr#open_or_create_buffer(...)
   endif
 endfunc
 
-func! buffr#create_buffer(...)
+func! buffr#create_buffer(...) abort
   let l:name = s:name(a:000)
   let l:position = s:position(a:000)
 
   call s:open_buffer(l:position, 'new', l:name)
 endfunc
 
-func! buffr#open_buffer(...)
+func! buffr#open_buffer(...) abort
   let l:name = s:name(a:000)
   let l:position = s:position(a:000)
 
@@ -47,7 +47,7 @@ func! buffr#open_buffer(...)
   endif
 endfunc
 
-func! s:open_buffer(position, action, name)
+func! s:open_buffer(position, action, name) abort
   let l:command = a:position . ' ' . a:action
 
   if a:name != s:default_name
@@ -57,7 +57,7 @@ func! s:open_buffer(position, action, name)
   silent exec l:command
 endfunc
 
-func! s:change_focus(window_number)
+func! s:change_focus(window_number) abort
   if winnr() != a:window_number
     exec a:window_number . 'wincmd w'
   endif

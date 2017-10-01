@@ -3,7 +3,7 @@
 Author:          Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:        https://github.com/lucerion/vim-buffr
 Version:         1.0.0 (2017-09-03)
-Licence:         BSD-3-Clause (see LICENSE)
+Licence:         BSD-3-Clause (see vim-buffr-license)
 
 ===============================================================================
 CONTENTS                                                            *vim-buffr*
