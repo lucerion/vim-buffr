@@ -50,6 +50,7 @@ COMMANDS                                                   *vim-buffr-commands*
 
   Open or create a buffer with {name} at {position}.
   Options 'name' and 'position' are optional.
+
   Possible {position} values: -top, -bottom, -left, -right, -tab
   Default {position} value: -top
 
@@ -58,7 +59,7 @@ OPTIONS                                                     *vim-buffr-options*
 
                                                      *g:buffr_default_position*
 
-  Default buffer position.
+Default buffer position.
 
   Possible values: 'top', 'bottom', 'left', 'right', 'tab'
   Default value: 'top'
@@ -72,6 +73,7 @@ buffr#open_or_create_buffer({ 'name': {name}, 'position': {position} })
 
   Open or create a buffer with {name} at {position}.
   Options 'name' and 'position' are optional.
+
   Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
   Default {position} value: 'top'
 
@@ -81,6 +83,7 @@ buffr#open_buffer({ 'name': {name}, 'position': {position})
 
   Open a buffer with {name} at {position}.
   Option 'name' is required.
+
   Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
   Default {position} value: 'top'
 
@@ -90,6 +93,7 @@ buffr#create_buffer({ 'name': {name}, 'position': {position} })
 
   Create a new buffer with {name} at {position}.
   Options 'name' and 'position' are optional.
+
   Possible {position} values: 'top', 'bottom', 'left', 'right', 'tab'
   Default position value: 'top'
 
