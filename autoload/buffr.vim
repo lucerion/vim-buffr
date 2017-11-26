@@ -7,19 +7,17 @@
 " ==============================================================
 
 let s:buffers = {}
-let s:positions = {
-  \ 'top': 'leftabove',
+let s:split_positions = {
+  \ 'top':    'leftabove',
   \ 'bottom': 'rightbelow',
-  \ 'left': 'vertical leftabove',
-  \ 'right': 'vertical rightbelow',
-  \ 'tab': 'tab'
+  \ 'left':   'vertical leftabove',
+  \ 'right':  'vertical rightbelow',
+  \ 'tab':    'tab'
   \ }
 let s:default_name = 'buffr'
 
 func! buffr#open_or_create_buffer(...) abort
-  let l:name = s:name(a:000)
-
-  if buffer_exists(l:name)
+  if buffer_exists(s:name(a:000))
     call buffr#open_buffer(s:params(a:000))
   else
     call buffr#create_buffer(s:params(a:000))
@@ -27,21 +25,15 @@ func! buffr#open_or_create_buffer(...) abort
 endfunc
 
 func! buffr#create_buffer(...) abort
-  let l:name = s:name(a:000)
-  let l:position = s:position(a:000)
-
-  call s:open_buffer(l:position, 'new', l:name)
+  call s:open_buffer(s:position(a:000), 'new', s:name(a:000))
 endfunc
 
 func! buffr#open_buffer(...) abort
-  let l:name = s:name(a:000)
-  let l:position = s:position(a:000)
-
-  let l:buffer_number = bufnr(l:name)
+  let l:buffer_number = bufnr(s:name(a:000))
   let l:window_number = bufwinnr(l:buffer_number)
 
   if l:window_number == -1
-    call s:open_buffer(l:position, 'split', '+buffer'.l:buffer_number)
+    call s:open_buffer(s:position(a:000), 'split', '+buffer'.l:buffer_number)
   else
     call s:change_focus(l:window_number)
   endif
@@ -80,7 +72,7 @@ func! s:position(args)
     return l:current_position
   endif
 
-  let l:new_position = get(s:positions, l:position, '')
+  let l:new_position = get(s:split_positions, l:position, '')
   if len(l:new_position)
     let s:buffers[l:name] = l:new_position
     return l:new_position
@@ -90,5 +82,5 @@ func! s:position(args)
     return l:current_position
   endif
 
-  return get(s:positions, g:buffr_default_position, s:positions.top)
+  return get(s:split_positions, g:buffr_default_position, s:split_positions.top)
 endfunc

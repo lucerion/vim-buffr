@@ -28,8 +28,7 @@ func! s:open_buffer(...) abort
     let l:args = { 'name': l:name }
   endif
 
-  let l:position_args_filter = 'index(s:allowed_args, v:val) >= 0'
-  let l:position = get(filter(copy(a:000), l:position_args_filter), -1)
+  let l:position = get(filter(copy(a:000), 'index(s:allowed_args, v:val) >= 0'), -1)
   let l:args = { 'position': substitute(l:position, '-', '', 'g') }
 
   call buffr#open_or_create_buffer(l:args)
