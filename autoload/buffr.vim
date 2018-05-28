@@ -8,11 +8,15 @@
 
 let s:buffers = {}
 let s:positions = {
-  \ 'top':    'leftabove',
-  \ 'bottom': 'rightbelow',
-  \ 'left':   'vertical leftabove',
-  \ 'right':  'vertical rightbelow',
-  \ 'tab':    'tab'
+  \ 'tab':          'tab',
+  \ 'top':          'leftabove',
+  \ 'bottom':       'rightbelow',
+  \ 'left':         'vertical leftabove',
+  \ 'right':        'vertical rightbelow',
+  \ 'top-full':     'topleft split',
+  \ 'bottom-full':  'botright split',
+  \ 'left-full':    'vertical topleft split',
+  \ 'right-full':   'vertical botright split'
   \ }
 let s:default_name = 'buffr'
 
