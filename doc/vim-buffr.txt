@@ -98,6 +98,13 @@ buffr#create_buffer({ 'name': {name}, 'position': {position} })
   'top-full', 'bottom-full', 'left-full', 'right-full'
   Default {position} value: 'top'
 
+
+                                                              *buffr#positions*
+
+buffr#positions()
+
+  Returns |List| of positions.
+
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
 

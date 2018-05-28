@@ -20,6 +20,10 @@ let s:positions = {
   \ }
 let s:default_name = 'buffr'
 
+func! buffr#positions()
+  return keys(s:positions)
+endfunc
+
 func! buffr#open_or_create_buffer(...) abort
   if buffer_exists(s:name(a:000))
     call buffr#open_buffer(s:params(a:000))
