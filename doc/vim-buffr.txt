@@ -46,18 +46,15 @@ COMMANDS                                                   *vim-buffr-commands*
 
                                                                        *:Buffr*
 
-:Buffr {position} {name} or :Buffr {name} {position}
+:Buffr {name}
 
-  Open or create a buffer with {name} at {position}.
-  Options 'name' and 'position' are optional.
-
-  Possible {position} values: -top, -bottom, -left, -right, -tab
-  Default {position} value: -top
+  Open or create a buffer with {name}.
+  Option 'name' is optional.
 
 ===============================================================================
 OPTIONS                                                     *vim-buffr-options*
 
-                                                     *g:buffr_default_position*
+                                                             *g:buffr_position*
 
 Default buffer position.
 

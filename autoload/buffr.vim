@@ -7,7 +7,7 @@
 " ==============================================================
 
 let s:buffers = {}
-let s:split_positions = {
+let s:positions = {
   \ 'top':    'leftabove',
   \ 'bottom': 'rightbelow',
   \ 'left':   'vertical leftabove',
@@ -63,24 +63,20 @@ func! s:name(args)
   return get(s:params(a:args), 'name', s:default_name)
 endfunc
 
-func! s:position(args)
+func! s:position(args) abort
   let l:name = s:name(a:args)
-  let l:position = get(s:params(a:args), 'position', '')
+  let l:current_position = get(s:params(a:args), 'position', '')
 
-  let l:current_position = get(s:buffers, l:name, '')
-  if !len(l:position) && len(l:current_position)
-    return l:current_position
+  let l:split = get(s:positions, l:current_position, '')
+  if len(l:current_position) && len(l:split)
+    let s:buffers[l:name] = l:split
+    return l:split
   endif
 
-  let l:new_position = get(s:split_positions, l:position, '')
-  if len(l:new_position)
-    let s:buffers[l:name] = l:new_position
-    return l:new_position
+  let l:previous_split = get(s:buffers, l:name, '')
+  if len(l:previous_split)
+    return l:previous_split
   endif
 
-  if len(l:current_position)
-    return l:current_position
-  endif
-
-  return get(s:split_positions, g:buffr_default_position, s:split_positions.top)
+  return s:positions.top
 endfunc

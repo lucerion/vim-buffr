@@ -11,27 +11,8 @@ if exists('g:loaded_buffr') || &compatible || v:version < 700
 endif
 let g:loaded_buffr = 1
 
-if !exists('g:buffr_default_position')
-  let g:buffr_default_position = 'top'
+if !exists('g:buffr_position')
+  let g:buffr_position = 'top'
 endif
 
-let s:allowed_args = ['-top', '-bottom', '-left', '-right', '-tab']
-
-func! s:autocompletion(input, command_line, cursor_position) abort
-  return filter(s:allowed_args, 'v:val =~ a:input')
-endfunc
-
-func! s:open_buffer(...) abort
-  let l:name_args_filter = 'index(s:allowed_args, v:val) < 0'
-  let l:name = join(filter(copy(a:000), l:name_args_filter))
-  if len(l:name)
-    let l:args = { 'name': l:name }
-  endif
-
-  let l:position = get(filter(copy(a:000), 'index(s:allowed_args, v:val) >= 0'), -1)
-  let l:args = { 'position': substitute(l:position, '-', '', 'g') }
-
-  call buffr#open_or_create_buffer(l:args)
-endfunc
-
-comm! -nargs=* -complete=customlist,s:autocompletion Buffr call s:open_buffer(<f-args>)
+comm! -nargs=? Buffr call buffr#open_or_create_buffer({ 'name': <q-args>, 'position': g:buffr_position })
