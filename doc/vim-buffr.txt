@@ -115,19 +115,19 @@ CHANGELOG                                                 *vim-buffr-changelog*
 0.3.0 (2016-03-26)~
 
   Changes
-    * buffer name was changed to optional
-    * function params were changed to named params
-    * default position option was added
+    * buffer name changed to optional
+    * function params changed to named params
+    * default position option added
 
 0.2.0 (2016-02-08)~
 
   Changes
-    * buffr#open function was separated to buffr#open_or_create_buffer,
+    * buffr#open function separated to buffr#open_or_create_buffer,
       buffr#open_buffer, buffr#create_buffer
-    * :Buffr command was added
+    * :Buffr command added
 
   Fixes
-    * buffer name space escaping was added
+    * buffer name space escaping added
     * open buffer silent
 
 0.1.0 (2015-12-06)~
