@@ -25,25 +25,35 @@ func! buffr#positions()
 endfunc
 
 func! buffr#open_or_create_buffer(...) abort
-  if buffer_exists(s:name(a:000))
-    call buffr#open_buffer(s:params(a:000))
+  let l:buffer_options = s:buffer_options(a:000)
+
+  if buffer_exists(s:buffer_name(a:000))
+    call buffr#open_buffer(l:buffer_options)
   else
-    call buffr#create_buffer(s:params(a:000))
+    call buffr#create_buffer(l:buffer_options)
   endif
 endfunc
 
 func! buffr#create_buffer(...) abort
-  call s:open_buffer(s:position(a:000), 'new', s:name(a:000))
+  let l:buffer_position = s:buffer_position(a:000)
+  let l:buffer_name = s:buffer_name(a:000)
+  let l:action = 'new'
+
+  call s:open_buffer(l:buffer_position, l:action, l:buffer_name)
 endfunc
 
 func! buffr#open_buffer(...) abort
-  let l:buffer_number = bufnr(s:name(a:000))
+  let l:buffer_number = bufnr(s:buffer_name(a:000))
   let l:window_number = bufwinnr(l:buffer_number)
 
   if l:window_number == -1
-    call s:open_buffer(s:position(a:000), 'split', '+buffer'.l:buffer_number)
+    let l:buffer_position = s:buffer_position(a:000)
+    let l:buffer_name = '+buffer'.l:buffer_number
+    let l:action = 'split'
+
+    call s:open_buffer(l:buffer_position, l:action, l:buffer_name)
   else
-    call s:change_focus(l:window_number)
+    call s:change_focus_to_buffer(l:window_number)
   endif
 endfunc
 
@@ -57,31 +67,31 @@ func! s:open_buffer(position, action, name) abort
   silent exec l:command
 endfunc
 
-func! s:change_focus(window_number) abort
+func! s:change_focus_to_buffer(window_number) abort
   if winnr() != a:window_number
     exec a:window_number . 'wincmd w'
   endif
 endfunc
 
-func! s:params(args)
+func! s:buffer_options(args)
   return get(a:args, 0, {})
 endfunc
 
-func! s:name(args)
-  return get(s:params(a:args), 'name', s:default_name)
+func! s:buffer_name(args)
+  return get(s:buffer_options(a:args), 'name', s:default_name)
 endfunc
 
-func! s:position(args) abort
-  let l:name = s:name(a:args)
-  let l:current_position = get(s:params(a:args), 'position', '')
+func! s:buffer_position(args) abort
+  let l:buffer_name = s:buffer_name(a:args)
+  let l:current_position = get(s:buffer_options(a:args), 'position', '')
 
   let l:split = get(s:positions, l:current_position, '')
   if len(l:current_position) && len(l:split)
-    let s:buffers[l:name] = l:split
+    let s:buffers[l:buffer_name] = l:split
     return l:split
   endif
 
-  let l:previous_split = get(s:buffers, l:name, '')
+  let l:previous_split = get(s:buffers, l:buffer_name, '')
   if len(l:previous_split)
     return l:previous_split
   endif
