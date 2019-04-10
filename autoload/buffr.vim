@@ -11,12 +11,12 @@ let s:positions = {
   \ 'tab':          'tab',
   \ 'top':          'leftabove',
   \ 'bottom':       'rightbelow',
-  \ 'left':         'vertical leftabove',
-  \ 'right':        'vertical rightbelow',
-  \ 'top-full':     'topleft split',
-  \ 'bottom-full':  'botright split',
-  \ 'left-full':    'vertical topleft split',
-  \ 'right-full':   'vertical botright split'
+  \ 'left':         'leftabove vertical',
+  \ 'right':        'rightbelow vertical',
+  \ 'top-full':     'topleft',
+  \ 'bottom-full':  'botright',
+  \ 'left-full':    'topleft vertical',
+  \ 'right-full':   'botright vertical'
   \ }
 let s:default_name = 'buffr'
 
