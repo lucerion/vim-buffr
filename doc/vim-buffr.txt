@@ -10,7 +10,6 @@ CONTENTS                                                            *vim-buffr*
 
 Install                                                     |vim-buffr-install|
 Commands                                                   |vim-buffr-commands|
-Options                                                     |vim-buffr-options|
 Functions                                                 |vim-buffr-functions|
 Changelog                                                 |vim-buffr-changelog|
 License                                                     |vim-buffr-license|
@@ -50,60 +49,41 @@ COMMANDS                                                   *vim-buffr-commands*
 
   Open or create a buffer with {name}.
   Option 'name' is optional.
-
-===============================================================================
-OPTIONS                                                     *vim-buffr-options*
-
-                                                             *g:buffr_position*
-
-Default buffer position.
-
-  Possible values: 'tab', 'top', 'bottom', 'left', 'right',
-  'top-full', 'bottom-full', 'left-full', 'right-full'
-  Default value: 'top'
+  Window split modes (|leftabove|, |rightbelow|, |topleft|, |botright|,
+  |vsplit|, |tab|, etc) are available.
 
 ===============================================================================
 FUNCTIONS                                                 *vim-buffr-functions*
 
                                                   *buffr#open_or_create_buffer*
 
-buffr#open_or_create_buffer({ 'name': {name}, 'position': {position} })
+buffr#open_or_create_buffer({name}, {mods})
 
-  Open or create a buffer with {name} at {position}.
+  Open or create a buffer with {name} with {mods}.
   Options 'name' and 'position' are optional.
 
-  Possible {position} values: 'tab', 'top', 'bottom', 'left', 'right',
-  'top-full', 'bottom-full', 'left-full', 'right-full'
-  Default {position} value: 'top'
+  Possible {mods} values: |leftabove|, |rightbelow|, |topleft|, |botright|,
+  |vsplit|, |tab|, etc (see :help <mods>)
 
                                                             *buffr#open_buffer*
 
-buffr#open_buffer({ 'name': {name}, 'position': {position})
+buffr#open_buffer({name}, {mods})
 
-  Open a buffer with {name} at {position}.
-  Option 'name' is required.
+  Open a buffer with {name} with {mods}.
+  Option 'name' is required, 'mods' option is optional.
 
-  Possible {position} values: 'tab', 'top', 'bottom', 'left', 'right',
-  'top-full', 'bottom-full', 'left-full', 'right-full'
-  Default {position} value: 'top'
+  Possible {mods} values: |leftabove|, |rightbelow|, |topleft|, |botright|,
+  |vsplit|, |tab|, etc (see :help <mods>)
 
                                                           *buffr#create_buffer*
 
-buffr#create_buffer({ 'name': {name}, 'position': {position} })
+buffr#create_buffer({name}, {mods})
 
-  Create a new buffer with {name} at {position}.
+  Create a new buffer with {name} with {mods}.
   Options 'name' and 'position' are optional.
 
-  Possible {position} values: 'tab', 'top', 'bottom', 'left', 'right',
-  'top-full', 'bottom-full', 'left-full', 'right-full'
-  Default {position} value: 'top'
-
-
-                                                              *buffr#positions*
-
-buffr#positions()
-
-  Returns |List| of positions.
+  Possible {mods} values: |leftabove|, |rightbelow|, |topleft|, |botright|,
+  |vsplit|, |tab|, etc (see :help <mods>)
 
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*

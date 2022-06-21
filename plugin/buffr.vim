@@ -11,8 +11,4 @@ if exists('g:loaded_buffr') || &compatible || v:version < 700
 endif
 let g:loaded_buffr = 1
 
-if !exists('g:buffr_position')
-  let g:buffr_position = 'top'
-endif
-
-comm! -nargs=? Buffr call buffr#open_or_create_buffer({ 'name': <q-args>, 'position': g:buffr_position })
+comm! -nargs=* Buffr call buffr#open_or_create_buffer(<q-args>, <q-mods>)
