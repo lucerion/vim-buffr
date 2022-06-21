@@ -2,7 +2,7 @@
 
 Author:          Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:        https://github.com/lucerion/vim-buffr
-Version:         1.0.0 (2017-09-03)
+Version:         2.0.0 (2022-06-21)
 Licence:         BSD-3-Clause (see vim-buffr-license)
 
 ===============================================================================
@@ -88,13 +88,25 @@ buffr#create_buffer({name}, {mods})
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
 
+2.0.0 (2022-06-21)~
+
+  Changes
+
+    * removed position option from command and Functions
+      (use window split modes instead)
+    * removed default position option
+    * function params is not an object
+
 1.0.0 (2017-09-03)~
 
-  Code and documentation changes
+  Changes
+
+    * code and documentation changes
 
 0.3.0 (2016-03-26)~
 
   Changes
+
     * buffer name changed to optional
     * function params changed to named params
     * default position option added
@@ -102,11 +114,13 @@ CHANGELOG                                                 *vim-buffr-changelog*
 0.2.0 (2016-02-08)~
 
   Changes
+
     * buffr#open function separated to buffr#open_or_create_buffer,
       buffr#open_buffer, buffr#create_buffer
     * :Buffr command added
 
   Fixes
+
     * buffer name space escaping added
     * open buffer silent
 
