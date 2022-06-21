@@ -2,7 +2,7 @@
 
 Author:          Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:        https://github.com/lucerion/vim-buffr
-Version:         1.0.0 (2017-09-03)
+Version:         2.0.0 (2022-06-21)
 Licence:         BSD-3-Clause (see vim-buffr-license)
 
 ===============================================================================
@@ -87,6 +87,13 @@ buffr#create_buffer({name}, {mods})
 
 ===============================================================================
 CHANGELOG                                                 *vim-buffr-changelog*
+
+2.0.0 (2022-06-21)~
+
+  Changes
+    * removed position option from command and functions (use window split modes instead)
+    * removed default position option
+    * function params is not an object
 
 1.0.0 (2017-09-03)~
 
