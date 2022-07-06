@@ -17,6 +17,16 @@ License                                                     |vim-buffr-license|
 ===============================================================================
 INSTALL                                                     *vim-buffr-install*
 
+Vim packages (Vim 8, Neovim)
+>
+    mkdir -p ~/.vim/pack/lucerion/start
+    cd ~/.vim/pack/lucerion/start
+    git clone https://github.com/lucerion/vim-autocomplpop-ctags
+<
+vim-plug                                 https://github.com/junegunn/vim-plug
+>
+    Plug 'lucerion/vim-buffr'
+<
 Vundle                                https://github.com/VundleVim/Vundle.vim
 >
     Plugin 'lucerion/vim-buffr'
@@ -26,13 +36,13 @@ Pathogen                                https://github.com/tpope/vim-pathogen
     cd ~/.vim/bundle
     git clone https://github.com/lucerion/vim-buffr
 <
+dein.vim                                   https://github.com/Shougo/dein.vim
+>
+    call dein#add('lucerion/vim-buffr')
+<
 NeoBundle                             https://github.com/Shougo/neobundle.vim
 >
     NeoBundle 'lucerion/vim-buffr'
-<
-vim-plug                                 https://github.com/junegunn/vim-plug
->
-    Plug 'lucerion/vim-buffr'
 <
 Manual
 >
